@@ -11,15 +11,44 @@ app.get('/', (req, res) => {
   
 //GET
 // GET ALL DESTINATIONS(MAKE AN API ROUTE)
-app.get('/api/destinations', (req,res)=> { 
+app.get('/destinations', (req,res)=> { 
   res.json(destinations)
 })
 
+// specify a particular destination
+app.get('/destinations/:destination', (req,res)=> {
+  destinations.forEach((item)=> { 
+    if(item.destination === req.params.destination){ 
+      console.log(item)
+      res.send(item)
+      return;
+    }
+  })
+  console.log(req.params)
+  res.send('Error')
+  
+})
+// specify a particular description
+
+
+// app.get('/destinations/:id', (req,res)=> {
+//   res.send(req.params)
+// })
+
 // POST
+app.post('/', (req,res)=> { 
+  res.send('Got a POST request')
+})
 
 // PATCH/PUT (IF I CAN FIGURE THIS OUT)
+app.put('/', (req,res)=> { 
+  res.send('Got a PUT request at /')
+})
 
 // DELETE
+app.delete('/', (req, res) => {
+  res.send('Got a DELETE request at /')
+})
 
 
 
@@ -27,6 +56,10 @@ app.get('/api/destinations', (req,res)=> {
 
 
   // LISTENING PORT 
-  app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-  });
+  app.listen(3000, ()=> { 
+    console.log('server running on port 3000')
+  })
+  
+  // app.listen(port, () => {
+  //   console.log(`Server is running on port ${port}`);
+  // });
