@@ -3,11 +3,14 @@ const app = express();
 const port = 3000; 
 
 const destinations = require('./data/destinations')
+
+// ROUTES
 app.get('/', (req, res) => {
     res.send('Welcome to my server!');
   });
   
 //GET
+// GET ALL DESTINATIONS(MAKE AN API ROUTE)
 app.get('/api/destinations', (req,res)=> { 
   res.json(destinations)
 })
@@ -23,7 +26,7 @@ app.get('/api/destinations', (req,res)=> {
 
 
 
-  
+  // LISTENING PORT 
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
